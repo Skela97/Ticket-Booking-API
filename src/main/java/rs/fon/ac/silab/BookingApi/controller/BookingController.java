@@ -67,7 +67,7 @@ public class BookingController {
     public ResponseEntity<?> deleteById(@PathVariable long idEvent, Authentication authentication){
             
         String username = authentication.getName();
-        System.out.println("USLI SMO OVDE " + username);
+        
         bookingService.deleteById(idEvent,username);
         
         return ResponseEntity.ok().body(null);

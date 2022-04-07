@@ -129,17 +129,17 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<Event> findMyEvents(String username) {
-       System.out.println("USLO DO OVDE USER JE ");
+     
         List<Event> events = eventDao.findAll();
         List<Event> onlyActiveEvents = new ArrayList<>();
         User user = userRepository.findByName(username);
-        System.out.println("USLO DO OVDE USER JE " + user);
+        
         
         for (Event event : events) {
             
             if(event.getDate().after(new Date())){
                if(event.getUser().getIdUser() == user.getIdUser()){
-                   System.out.println("DESILO SE");
+                   
                     onlyActiveEvents.add(event);
             
             
@@ -150,7 +150,7 @@ public class EventServiceImpl implements EventService {
             
         }
         
-        System.out.println("Vratio eventove " + onlyActiveEvents);
+        
                 
        return  onlyActiveEvents;
     }
