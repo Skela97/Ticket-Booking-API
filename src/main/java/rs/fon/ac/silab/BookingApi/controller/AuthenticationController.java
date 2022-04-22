@@ -20,14 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/auth")
 public class AuthenticationController {
     int a;
-<<<<<<< HEAD
+
     int b;
     int d;
     int f;
-=======
-    int c;
+
     
->>>>>>> aaf7459447de0f8171334b511c73b2c6ba6febd1
+    
+
     /*
     @GetMapping("/refreshToken")
     public ResponseEntity<?> refreshToken(HttpServletRequest request, HttpServletResponse response){
