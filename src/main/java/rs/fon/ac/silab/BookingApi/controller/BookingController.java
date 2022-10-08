@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import rs.fon.ac.silab.BookingApi.domain.Booking;
 import rs.fon.ac.silab.BookingApi.domain.User;
 import rs.fon.ac.silab.BookingApi.service.BookingService;
-import rs.fon.ac.silab.BookingApi.service.EventService;
 
 /**
  *
@@ -47,21 +47,18 @@ public class BookingController {
         User user = new User();
         user.setName(username);
         booking.setUser(user);
+
        return ResponseEntity.ok().body(bookingService.save(booking));
            
     }
-    
-    
     @CrossOrigin
     @GetMapping()
     public ResponseEntity<List<Booking>> findAll(Authentication authentication){
           String username = authentication.getName();
+
           return ResponseEntity.ok().body(bookingService.findAll(username));
-        
-    
     }
-    
-    
+
     @CrossOrigin
     @DeleteMapping("/{idEvent}")
     public ResponseEntity<?> deleteById(@PathVariable long idEvent, Authentication authentication){
@@ -72,7 +69,4 @@ public class BookingController {
         
         return ResponseEntity.ok().body(null);
     }
-    
-    
-    
 }

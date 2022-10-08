@@ -27,11 +27,9 @@ public class PlaceServiceImpl implements PlaceService{
     public PlaceServiceImpl(Dao<Place> placeDao) {
         this.placeDao = placeDao;
     }
-    
-    
+
     @Override
     public List<Place> findAll() {
         return placeDao.findAll();
     }
-    
 }

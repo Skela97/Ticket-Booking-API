@@ -8,7 +8,6 @@ package rs.fon.ac.silab.BookingApi.service.impl;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.function.Supplier;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -18,8 +17,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import rs.fon.ac.silab.BookingApi.dao.Dao;
-import rs.fon.ac.silab.BookingApi.domain.EventType;
+
 import rs.fon.ac.silab.BookingApi.domain.Role;
 import rs.fon.ac.silab.BookingApi.domain.User;
 import rs.fon.ac.silab.BookingApi.exceptions.UserNotFoundException;
@@ -49,24 +47,18 @@ public class UserServiceImpl implements UserService, UserDetailsService{
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByName(username);
         if(user==null){
-        
             throw new UserNotFoundException("User not found in the database");
         }
-        
-        
-       
+
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
         user.getRoles().forEach(role ->{authorities.add(new SimpleGrantedAuthority(role.getName()));});
+
         return new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(), authorities);
-        
-        
     }
     
     @Override
     public User addUser(User user){
-    
         return userRepository.save(user);
-    
     }
     
    
@@ -74,16 +66,13 @@ public class UserServiceImpl implements UserService, UserDetailsService{
     public User saveUser(User user){
         
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         return userRepository.save(user);
-    
-    
     }
  
     @Override
     public void deleteById(long id){
-    
        userRepository.deleteUserByidUser(id);
-    
     }
     
     @Override
@@ -92,7 +81,6 @@ public class UserServiceImpl implements UserService, UserDetailsService{
         //return userRepository.findUserById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
     
     }
-
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
@@ -114,8 +102,4 @@ public class UserServiceImpl implements UserService, UserDetailsService{
     public User getUser(String name) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-
-    
-    
 }

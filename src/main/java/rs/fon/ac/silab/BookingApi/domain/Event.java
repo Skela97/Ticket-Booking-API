@@ -17,13 +17,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -32,8 +28,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 @javax.persistence.Entity
 @Table
 public class Event implements rs.fon.ac.silab.BookingApi.domain.Entity{
-    
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
@@ -41,8 +36,7 @@ public class Event implements rs.fon.ac.silab.BookingApi.domain.Entity{
     private String name;
     private String description;
     private Date date;
-    
-    
+
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.EAGER)
     @JoinColumn(name = "idEventType")
     private EventType eventType;
@@ -50,8 +44,7 @@ public class Event implements rs.fon.ac.silab.BookingApi.domain.Entity{
     @ManyToOne(cascade = { CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.EAGER)
     @JoinColumn(name = "idPlace")
     private Place place;
-    
-  
+
     @JsonManagedReference
     @OneToMany(mappedBy = "event" , cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<TicketsCategory> ticketsCategory = new ArrayList<>();
@@ -60,9 +53,7 @@ public class Event implements rs.fon.ac.silab.BookingApi.domain.Entity{
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idUser")
     private User user;
-   
-    
-    
+
     public Event() {
     }
 
@@ -108,8 +99,6 @@ public class Event implements rs.fon.ac.silab.BookingApi.domain.Entity{
         return "[ EVENT " + name +" ID" + idEvent + "[ " + ticketsCategory + " ] ]";
     }
 
-  
-
     /**
      * @return the date
      */
@@ -138,20 +127,6 @@ public class Event implements rs.fon.ac.silab.BookingApi.domain.Entity{
         this.eventType = eventType;
     }
 
-    /*
-    public void addBooking(Booking booking){
-        
-        if(getBookings() == null){
-        
-            setBookings(new ArrayList<>());
-            
-        }
-    
-        getBookings().add(booking);
-        booking.setEvent(this);
-        
-    }
-    */
     public void addCategory(TicketsCategory ticketCategory){
         
         if(getTicketsCategory() == null){
@@ -159,13 +134,8 @@ public class Event implements rs.fon.ac.silab.BookingApi.domain.Entity{
             setTicketsCategory(new ArrayList<>());
             
         }
-    
       this.ticketsCategory.add(ticketCategory);
-      
-        
     }
-    
-    
     /**
      * @return the idEvent
      */
@@ -180,20 +150,6 @@ public class Event implements rs.fon.ac.silab.BookingApi.domain.Entity{
         this.idEvent = idEvent;
     }
 
-    /**
-     * @return the bookings
-     */
-    /*
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-    
-    
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
-    }
-    */
     /**
      * @return the ticketsCategory
      */
@@ -229,8 +185,4 @@ public class Event implements rs.fon.ac.silab.BookingApi.domain.Entity{
     public void setUser(User user) {
         this.user = user;
     }
-     
-   
-    
-    
 }

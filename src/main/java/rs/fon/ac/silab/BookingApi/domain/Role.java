@@ -52,8 +52,4 @@ public class Role implements Entity{
         return name;
                 
     }
-    
-    
-    
-    
 }

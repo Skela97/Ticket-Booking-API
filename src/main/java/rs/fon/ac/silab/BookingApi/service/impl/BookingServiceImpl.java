@@ -8,10 +8,8 @@ package rs.fon.ac.silab.BookingApi.service.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale.Category;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import rs.fon.ac.silab.BookingApi.dao.Dao;
 import rs.fon.ac.silab.BookingApi.domain.Booking;
@@ -69,43 +67,28 @@ public class BookingServiceImpl implements BookingService{
     @Override
     public void deleteById(long idEvent, String username) {
         User user = userRepository.findByName(username);
-       
-                
-        
-        
         freeSeats(idEvent, user.getIdUser());
         bookingDao.deleteByCompositeId(idEvent, user.getIdUser());
     }
 
-    
-    
     private void checkIfBooked(Booking booking) {
        
         List<Booking> bookings = bookingDao.findAll();
         
         for (Booking booking1 : bookings) {
-            System.out.println("1) : " + booking1.getId().getIdEvent() + " == " + booking.getId().getIdEvent() + " 2) " + booking1.getId().getIdUser() + " == " +booking.getId().getIdUser());
             if((booking1.getId().getIdEvent() == booking.getEvent().getIdEvent()) && (booking1.getId().getIdUser() == booking.getUser().getIdUser()) ){
              
                     throw new TicketAlreadyBookedException("You have already booked your tickets for this event!");
             }
-            
-            
         }
     }
 
     private void checkIfEventPassed(Booking booking) {
         
         if(booking.getEvent().getDate().before(new Date())){
-            System.out.println("EVENT TIME IS " + booking.getEvent().getDate());
             throw new EventPassedException("You can't book your tickets, because this event have already passed!");
-        
         }
-        
-        
     }
-
-
     private void handleSeats(Booking booking) {
         System.out.println(booking.getEvent().getIdEvent());
        Event event = eventDao.findById(booking.getEvent().getIdEvent());
@@ -113,34 +96,21 @@ public class BookingServiceImpl implements BookingService{
        TicketsCategory chosenCategory = null;
        
         for (TicketsCategory category : event.getTicketsCategory()) {
-            
             if(category.getId().getIdTicketsCategory() == booking.getTicketsCategory().getId().getIdTicketsCategory() ){
-                
-                
+
                 if(booking.getAmount() > (category.getMaxSeats() - category.getOccupiedSeats()) ){
-                     
                     throw new AllSeatsTakenException("Unfortunely all seats for the chosen ticket category are taken ");
-                
                 }
                  
                 chosenCategory = category;
                 category.setOccupiedSeats(category.getOccupiedSeats() + booking.getAmount());
-            
             }
-            
         }
        
         if(chosenCategory == null){
-         
               throw new CategoryNotFoundException("Category not found.");
-        
         }
-        
- 
         eventDao.update(event);
-        
-          
-        
     }
 
     private void freeSeats(long idEvent, long idUser) {
@@ -162,23 +132,16 @@ public class BookingServiceImpl implements BookingService{
      
         for (TicketsCategory category : event.getTicketsCategory()) {
             if(category.getId().getIdTicketsCategory() == booking.getTicketsCategory().getId().getIdTicketsCategory()){
-            
-                
                 category.setOccupiedSeats(category.getOccupiedSeats() - booking.getAmount());
                 chosenCategory = category;
             }
-            
         }
         
         if(chosenCategory == null){
-        
             throw new CategoryNotFoundException("Category not found!");
-        
         }
         
         eventDao.update(event);
-        
-        
     }
 
     private Booking addUser(Booking booking) {
@@ -202,9 +165,4 @@ public class BookingServiceImpl implements BookingService{
         }
         return myBookings;
     }
-
-    
-    
-    
-    
 }

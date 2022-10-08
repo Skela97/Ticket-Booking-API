@@ -87,7 +87,4 @@ public class BookingID implements Serializable {
         }
         return true;
     }
-    
-    
-    
 }

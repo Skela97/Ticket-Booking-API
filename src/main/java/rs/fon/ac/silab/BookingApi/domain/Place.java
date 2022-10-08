@@ -73,8 +73,4 @@ public class Place implements Entity {
     public void setMaxCapacity(int maxCapacity) {
         this.maxCapacity = maxCapacity;
     }
-    
-    
-    
-    
 }

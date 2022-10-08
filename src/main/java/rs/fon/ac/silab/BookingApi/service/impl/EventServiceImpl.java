@@ -35,8 +35,7 @@ import rs.fon.ac.silab.BookingApi.service.EventService;
 public class EventServiceImpl implements EventService {
     
     private Dao<Event> eventDao;
-   // private EventMapper eventMapper;
-    //@Qualifier(value = "EventDaoSpringJPA")
+
     private UserRepository userRepository;
     
     
@@ -44,26 +43,19 @@ public class EventServiceImpl implements EventService {
     public EventServiceImpl(@Qualifier(value = "eventDao")Dao<Event> eventDao, UserRepository userRepository) {
         this.eventDao = eventDao;
         this.userRepository = userRepository;
-       // this.eventMapper = eventMapper;
     }
-    
-    
+
     @Override
     public Event save(Event event)  {
       
         User user = findUser(event.getUser().getName());
         if(user == null){
-        
             throw new UserNotFoundException("User is not found");
         }
-        
+
         event.setUser(user);
-        
-        
+
         return eventDao.update(event);
-        
-        
-        
     }
 
     @Override
@@ -77,14 +69,9 @@ public class EventServiceImpl implements EventService {
             
                 onlyActiveEvents.add(event);
             }
-            
-            
+
         }
-        
-        System.out.println("Vratio eventove " + onlyActiveEvents);
-                
        return  onlyActiveEvents;
-        
     }
 
     @Override
@@ -139,20 +126,11 @@ public class EventServiceImpl implements EventService {
             
             if(event.getDate().after(new Date())){
                if(event.getUser().getIdUser() == user.getIdUser()){
-                   
                     onlyActiveEvents.add(event);
-            
-            
+                }
             }
-              
-            }
-            
-            
         }
-        
-        
-                
+
        return  onlyActiveEvents;
     }
-    
 }

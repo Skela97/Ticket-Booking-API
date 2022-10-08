@@ -47,10 +47,5 @@ public class ApplicationErrorResponse {
     public void setTimeStamp(long timeStamp) {
         this.timeStamp = timeStamp;
     }
-    
-    
-    
-    
-    
-    
+
 }

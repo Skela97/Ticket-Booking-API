@@ -7,16 +7,13 @@ package rs.fon.ac.silab.BookingApi.service;
 
 import java.util.List;
 import rs.fon.ac.silab.BookingApi.domain.Booking;
-import rs.fon.ac.silab.BookingApi.domain.Event;
 
 /**
  *
  * @author Vladimir
  */
 public interface BookingService {
-    
       Booking save(Booking booking);
       List<Booking> findAll(String username);
       void deleteById(long idEvent, String username);
-    
 }

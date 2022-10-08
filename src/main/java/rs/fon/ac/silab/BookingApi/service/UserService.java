@@ -22,9 +22,6 @@ public interface UserService {
     void addRoleToUser(String name, String roleName);
     User getUser(String name);
     User addUser(User user);
-     void deleteById(long id);
-     public User findById(long id);
-    //public User findById(long idUser);
-    
-    
+    void deleteById(long id);
+    User findById(long id);
 }

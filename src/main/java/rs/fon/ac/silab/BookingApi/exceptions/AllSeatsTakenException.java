@@ -10,11 +10,7 @@ package rs.fon.ac.silab.BookingApi.exceptions;
  * @author Vladimir
  */
 public class AllSeatsTakenException extends RuntimeException {
-
     public AllSeatsTakenException(String message) {
-        
         super(message);
     }
-    
-    
 }

@@ -18,16 +18,13 @@ import rs.fon.ac.silab.BookingApi.domain.User;
  */
 @Repository
 public class UserDao implements Dao<User>{
-
      private EntityManager entityManager;
 
     @Autowired
     public UserDao(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
-    
-    
-    
+
     @Override
     public User save(User t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -62,5 +59,4 @@ public class UserDao implements Dao<User>{
     public User findByCompositeId(long id1, long id2) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-   
 }

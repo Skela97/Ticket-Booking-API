@@ -5,15 +5,9 @@
  */
 package rs.fon.ac.silab.BookingApi.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -40,8 +34,7 @@ public class EventType implements rs.fon.ac.silab.BookingApi.domain.Entity{
 
     public EventType() {
     }
-    
-    
+
     /**
      * @return the idEventType
      */
@@ -90,10 +83,6 @@ public class EventType implements rs.fon.ac.silab.BookingApi.domain.Entity{
     public String toString() {
         return name;
     }
-    
-    
-    
 
-    
 }
 

@@ -13,7 +13,5 @@ import rs.fon.ac.silab.BookingApi.domain.Role;
  * @author Vladimir
  */
 public interface RoleRepository extends JpaRepository<Role, Long>{
-    
     Role findByName(String name);
-    
 }

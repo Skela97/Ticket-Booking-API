@@ -10,7 +10,6 @@ import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import rs.fon.ac.silab.BookingApi.dao.Dao;
-import rs.fon.ac.silab.BookingApi.domain.Event;
 import rs.fon.ac.silab.BookingApi.domain.EventType;
 
 /**
@@ -26,8 +25,7 @@ public class EventTypeDao implements Dao<EventType>{
     public EventTypeDao(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
-    
-    
+
     @Override
     public EventType save(EventType t){
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -62,5 +60,4 @@ public class EventTypeDao implements Dao<EventType>{
     public EventType findByCompositeId(long id1, long id2) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }

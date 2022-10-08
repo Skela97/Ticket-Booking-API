@@ -10,10 +10,7 @@ package rs.fon.ac.silab.BookingApi.exceptions;
  * @author Vladimir
  */
 public class CategoryNotFoundException extends RuntimeException{
-
     public CategoryNotFoundException(String message) {
         super(message);
     }
-    
-    
 }

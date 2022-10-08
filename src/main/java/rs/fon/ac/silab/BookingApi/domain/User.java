@@ -117,8 +117,4 @@ public class User implements rs.fon.ac.silab.BookingApi.domain.Entity{
     /**
      * @return the bookings
      */
-   
-    
-   
-    
 }

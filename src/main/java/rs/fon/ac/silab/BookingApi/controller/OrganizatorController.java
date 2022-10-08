@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import rs.fon.ac.silab.BookingApi.domain.Event;
 import rs.fon.ac.silab.BookingApi.service.EventService;
 
@@ -38,14 +39,7 @@ public class OrganizatorController {
     public ResponseEntity<List<Event>> findMyEvents(Authentication authentication){
         
         String username = authentication.getName();
-        
-        
+
         return ResponseEntity.ok().body(eventService.findMyEvents(username));
-       
     }
-    
-    
-    
-    
-    
 }

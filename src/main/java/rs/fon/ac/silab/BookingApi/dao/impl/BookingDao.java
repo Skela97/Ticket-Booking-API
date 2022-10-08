@@ -11,9 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import rs.fon.ac.silab.BookingApi.dao.Dao;
 import rs.fon.ac.silab.BookingApi.domain.Booking;
-import rs.fon.ac.silab.BookingApi.domain.Event;
-import rs.fon.ac.silab.BookingApi.domain.TicketsCategory;
-import rs.fon.ac.silab.BookingApi.domain.User;
 import rs.fon.ac.silab.BookingApi.domain.id.BookingID;
 
 /**
@@ -29,8 +26,7 @@ public class BookingDao implements Dao<Booking>{
     public BookingDao(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
-    
-    
+
     @Override
     public Booking save(Booking t) {
         
@@ -38,7 +34,7 @@ public class BookingDao implements Dao<Booking>{
        Booking booking =  addId(t);
        entityManager.merge(booking);
       
-        return t;
+       return t;
     }
 
     @Override
@@ -60,34 +56,29 @@ public class BookingDao implements Dao<Booking>{
     public Booking update(Booking t){
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-      
-   
 
     @Override
     public void deleteByCompositeId(long idEvent, long idUser) {
         Booking booking = findBooking(idEvent, idUser);
-      
-      
         entityManager.remove(booking);
     }
 
     private Booking findBooking(long idEvent, long idUser) {
         BookingID  id = new BookingID(idUser, idEvent);
+
         return entityManager.find(Booking.class, id);
     }
 
-    private Booking addId(Booking t) {
-       t.setId(new BookingID(t.getUser().getIdUser(), t.getEvent().getIdEvent()));
-        System.out.println("BLAAAAAAAaa6" + t.getTicketsCategory().getId());
-       return t;
+    private Booking addId(Booking booking) {
+       booking.setId(new BookingID(booking.getUser().getIdUser(), booking.getEvent().getIdEvent()));
+
+       return booking;
     }
 
     @Override
     public Booking findByCompositeId(long id1, long id2) {
        BookingID  id = new BookingID(id2, id1);
-        return entityManager.find(Booking.class, id);
+
+       return entityManager.find(Booking.class, id);
     }
-    
-    
 }

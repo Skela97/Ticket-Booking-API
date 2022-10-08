@@ -6,14 +6,9 @@
 package rs.fon.ac.silab.BookingApi.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import rs.fon.ac.silab.BookingApi.domain.id.TicketCategoryId;
+
 import javax.persistence.EmbeddedId;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
@@ -26,19 +21,14 @@ import javax.persistence.Table;
 @javax.persistence.Entity
 @Table
 public class TicketsCategory implements Entity{
-    
-    
     @EmbeddedId
     private TicketCategoryId id = new TicketCategoryId();
-    
-    
+
     @JsonBackReference
     @MapsId("idEvent")
     @JoinColumn(name = "idEvent")
     @ManyToOne
     private Event event;
-    
-    
     private String name;
     private String description;
     private int maxSeats;
@@ -85,11 +75,6 @@ public class TicketsCategory implements Entity{
     public void setEvent(Event event) {
         this.event = event;
     }
-
-    /**
-     * @return the idTicketsCategory
-     */
-   
 
     /**
      * @return the name
@@ -165,11 +150,4 @@ public class TicketsCategory implements Entity{
     public String toString() {
       return name + " " + description + " " + id.getIdEvent() + "";
     }
-
-    
-    
-    
-    
-    
-    
 }

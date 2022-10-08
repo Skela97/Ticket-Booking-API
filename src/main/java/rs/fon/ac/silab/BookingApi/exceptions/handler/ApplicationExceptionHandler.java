@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import rs.fon.ac.silab.BookingApi.exceptions.AllSeatsTakenException;
 import rs.fon.ac.silab.BookingApi.exceptions.ApplicationErrorResponse;
-import rs.fon.ac.silab.BookingApi.exceptions.ApplicationErrorResponse;
 import rs.fon.ac.silab.BookingApi.exceptions.BookingNotFoundException;
 import rs.fon.ac.silab.BookingApi.exceptions.CategoryNotFoundException;
 import rs.fon.ac.silab.BookingApi.exceptions.EventNotFoundException;
@@ -37,8 +36,6 @@ public class ApplicationExceptionHandler {
            return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
             
     }
-    
-       
     @ExceptionHandler
     public ResponseEntity<ApplicationErrorResponse> handleException(Exception exception){
         
@@ -60,9 +57,6 @@ public class ApplicationExceptionHandler {
            error.setTimeStamp(System.currentTimeMillis());
           
            return new ResponseEntity<>(error, HttpStatus.NOT_ACCEPTABLE);
-            
-        
-            
     }
     
      @ExceptionHandler
@@ -74,13 +68,8 @@ public class ApplicationExceptionHandler {
            error.setTimeStamp(System.currentTimeMillis());
           
            return new ResponseEntity<>(error, HttpStatus.NOT_ACCEPTABLE);
-            
-        
-            
     }
-    
-    //AllSeats Taken -  Implementacija
-    
+
     @ExceptionHandler
     public ResponseEntity<ApplicationErrorResponse> handleException(BookingNotFoundException enfe){
            
@@ -90,9 +79,6 @@ public class ApplicationExceptionHandler {
            error.setTimeStamp(System.currentTimeMillis());
           
            return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-            
-        
-            
     }
     
     @ExceptionHandler
@@ -104,9 +90,6 @@ public class ApplicationExceptionHandler {
            error.setTimeStamp(System.currentTimeMillis());
           
            return new ResponseEntity<>(error, HttpStatus.NOT_ACCEPTABLE);
-            
-        
-            
     }
     
      @ExceptionHandler
@@ -118,9 +101,6 @@ public class ApplicationExceptionHandler {
            error.setTimeStamp(System.currentTimeMillis());
           
            return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-            
-        
-            
     }
     
     
@@ -133,12 +113,5 @@ public class ApplicationExceptionHandler {
            error.setTimeStamp(System.currentTimeMillis());
           
            return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-            
-        
-            
     }
-     
-    
-    
-    
 }

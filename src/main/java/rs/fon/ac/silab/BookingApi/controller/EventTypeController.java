@@ -5,7 +5,6 @@
  */
 package rs.fon.ac.silab.BookingApi.controller;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import rs.fon.ac.silab.BookingApi.domain.EventType;
 import rs.fon.ac.silab.BookingApi.service.EventTypeService;
 
+import java.util.List;
+
 /**
  *
  * @author Vladimir
@@ -22,23 +23,17 @@ import rs.fon.ac.silab.BookingApi.service.EventTypeService;
 @RestController()
 @RequestMapping(path = "/eventType")
 public class EventTypeController {
-    
+
     private final EventTypeService eventTypeService;
 
     @Autowired
     public EventTypeController(EventTypeService eventTypeService) {
         this.eventTypeService = eventTypeService;
     }
-    
+
     @CrossOrigin
     @GetMapping()
-    public ResponseEntity<List<EventType>> getAll(){
-    
+    public ResponseEntity<List<EventType>> getAll() {
         return ResponseEntity.ok().body(eventTypeService.findAll());
-    
-        
     }
-    
-    
-    
 }

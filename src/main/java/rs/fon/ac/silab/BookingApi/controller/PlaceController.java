@@ -33,14 +33,10 @@ public class PlaceController {
         this.placeService = placeService;
     }
 
-    
     @GetMapping
     @CrossOrigin
     ResponseEntity<List<Place>> findAll(){
     
         return ResponseEntity.ok().body(placeService.findAll());
     }
-    
-    
-    
 }

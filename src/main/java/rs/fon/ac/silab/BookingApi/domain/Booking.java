@@ -7,16 +7,13 @@ package rs.fon.ac.silab.BookingApi.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import rs.fon.ac.silab.BookingApi.domain.id.BookingID;
-import java.lang.annotation.Annotation;
-import javax.persistence.CascadeType;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 import org.hibernate.annotations.LazyCollection;
@@ -41,15 +38,12 @@ public class Booking implements rs.fon.ac.silab.BookingApi.domain.Entity{
     @ManyToOne
     @LazyCollection(LazyCollectionOption.FALSE)
     private User user;
-   
-    
+
     @MapsId("idEvent")
     @JoinColumn(name = "idEvent")
     @ManyToOne
     private Event event;
 
-    
-    
    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumns( {
      @JoinColumn(name="idTicketsCategory_event", referencedColumnName="idEvent"),
@@ -57,13 +51,10 @@ public class Booking implements rs.fon.ac.silab.BookingApi.domain.Entity{
     } )
     
     private TicketsCategory ticketsCategory;
-    
-    
-    
+
     private double price;
     private int amount;
-   
-    
+
     public Booking() {
     }
 
@@ -74,8 +65,6 @@ public class Booking implements rs.fon.ac.silab.BookingApi.domain.Entity{
         this.price = price;
         this.amount = amount;
     }
-
-    
 
     /**
      * @return the id
@@ -161,8 +150,4 @@ public class Booking implements rs.fon.ac.silab.BookingApi.domain.Entity{
         this.ticketsCategory = ticketsCategory;
     }
 
-   
-
-    
-    
 }

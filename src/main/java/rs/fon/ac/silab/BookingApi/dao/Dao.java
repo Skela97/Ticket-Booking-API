@@ -22,6 +22,4 @@ public interface Dao <T> extends Entity{
     T update(T t);
     void deleteByCompositeId(long id1, long id2);
     T findByCompositeId(long id1, long id2);
-    
-    
 }

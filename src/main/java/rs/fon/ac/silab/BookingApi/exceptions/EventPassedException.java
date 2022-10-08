@@ -14,7 +14,4 @@ public class EventPassedException extends RuntimeException{
     public EventPassedException(String message) {
         super(message);
     }
-    
-    
-    
 }

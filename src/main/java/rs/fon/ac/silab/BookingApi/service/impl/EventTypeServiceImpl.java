@@ -23,17 +23,14 @@ import rs.fon.ac.silab.BookingApi.service.EventTypeService;
 @Transactional
 public class EventTypeServiceImpl implements EventTypeService {
     private Dao<EventType> eventTypeDao;
-   // private EventMapper eventMapper;
     //@Qualifier(value = "EventDaoSpringJPA")
     
     @Autowired
     public EventTypeServiceImpl( Dao<EventType> eventTypeDao) {
         this.eventTypeDao = eventTypeDao;
-       // this.eventMapper = eventMapper;
     }
     @Override
     public List<EventType> findAll() {
        return eventTypeDao.findAll();
     }
-    
 }
