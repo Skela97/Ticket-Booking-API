@@ -15,3 +15,5 @@ This API manages interactions between Organizers who create events and Users who
 - **Spring Data JPA**: For Database interactions.
 - **Spring Security** (OAuth2): Secure user management.
 - **MySQL**: RDMBS
+
+Additionally,`initdb.sql` file is provided to set up the project's database schema and populate it with initial data.
