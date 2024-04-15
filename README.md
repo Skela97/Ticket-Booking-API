@@ -1,13 +1,13 @@
 ## Ticket Booking API (University Project - 2021)
 
 ### Overview
-This API manages interactions between Organizers who create events and Users who book their spots.
+This Ticket Booking API orchestrates the dynamic interactions between Organizers, who curate and manage events, and Users, who engage with these events by reserving their spots.
 
-- **Organizers:** Initiate events, specifying details like the event name and dates.
+- **Organizers:** Manages events.
 - **Users(Customers):** Access the system to browse events and book the desired ones.
 - **Events** Central to the system, representing specific occasions with defined dates and place.
 - **Bookings** Connect Users Events, enabling seamless reservations.
-- **Tickets** Represent different categories or types of tickets available for booking, each with unique pricing or privileges.
+- **TicketsCategories** Represent different categories or types of tickets available for booking, each with unique pricing or privileges.
 - **Places** Represents the physical location for the event to occur.
 
 ### Technologies:
